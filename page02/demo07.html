@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>游戏示例_猜数字_完善游戏</title>
+    <title>游戏示例_猜数字_优化</title>
 
     <style>
       html {
@@ -55,6 +55,9 @@
       // 创建常量分别存储文本输入与提交按钮的引用
       const guessField = document.querySelector(".guessField");
       const guessSubmit = document.querySelector(".guessSubmit");
+
+      // 游戏开始时获取输入框焦点
+      guessField.focus();
 
       // 获取对应页面段落元素引用，存储到常量中
       const guesses = document.querySelector(".guesses");
@@ -162,6 +165,10 @@
 
         // lastResult 段落的背景色置白
         lastResult.style.backgroundColor = "white";
+
+        // 清空文字信息
+        guesses.textContent = "";
+        lowOrHi.textContent = "";
 
         // 生成随机数
         randomNumber = Math.floor(Math.random() * 101);
