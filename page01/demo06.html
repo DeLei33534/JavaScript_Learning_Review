@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>async 和 defer</title>
+    <!-- 
+        实际开发中，JS脚本阻塞问题主要有两种解决方案
+            - async
+              - 适用于脚本无需等待页面解析，且无依赖、独立运行的情况
+            - defer
+              - 适用于脚本无需等待页面解析，但依赖于其它脚本的情况
+              - 调用这些脚本时，应使用 defer将关联的脚本按所需顺序
+                置于 HTML 中，脚本将按顺序依次执行
+    -->
+  </head>
+  <body>
+    <!--
+        async实例参照demo05，defer实例如下
+    -->
+    <script src="./base.js" defer></script>
+    <script src="./base01.js" defer></script>
+    <script src="./base02.js" defer></script>
+    <!--
+        假定：
+        base01与02依赖base脚本，02同时也依赖01脚本
+        
+        若使用async属性，虽然可以解决页面渲染阻塞问题
+        但是脚本的运行次序无法控制
+        存在base01、02加载时，base可能还未加载的可能
+        使用 defer 属性，脚本将按照在页面中出现的顺序加载和运行，且不会出现渲染阻塞的问题
+    -->
+  </body>
+</html>

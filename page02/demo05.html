@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>游戏示例_猜数字_添加事件</title>
+
+    <style>
+      html {
+        font-family: sans-serif;
+      }
+
+      body {
+        width: 50%;
+        max-width: 800px;
+        min-width: 480px;
+        margin: 0 auto;
+      }
+
+      .lastResult {
+        color: white;
+        padding: 3px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>游戏示例_猜数字</h1>
+    <p>欢迎来到猜数字游戏!</p>
+    <p>游戏随机选定了一个100以内的自然数</p>
+    <p>不知道你能否在 10 次以内猜中它</p>
+    <p>每次系统都会告诉你，所猜的结果是高还是低了</p>
+    <p>快来试试吧!</p>
+
+    <div class="form">
+      <label for="guessField">请猜数: </label>
+      <input type="text" id="guessField" class="guessField" />
+      <input type="submit" value="确定" class="guessSubmit" />
+    </div>
+
+    <div class="resultParas">
+      <p class="guesses"></p>
+      <p class="lastResult"></p>
+      <p class="lowOrHi"></p>
+    </div>
+
+    <script>
+      /*
+        生成随机数，并存储到变量中
+          - Math.floor 向下取整
+          - Math.random()*101 生成随机数，0=<X<101
+      */
+      let randomNumber = Math.floor(Math.random() * 101);
+
+      // 创建常量分别存储文本输入与提交按钮的引用
+      const guessField = document.querySelector(".guessField");
+      const guessSubmit = document.querySelector(".guessSubmit");
+
+      // 获取对应页面段落元素引用，存储到常量中
+      const guesses = document.querySelector(".guesses");
+      const lastResult = document.querySelector(".lastResult");
+      const lowOrHi = document.querySelector(".lowOrHi");
+
+      // 创建计数器变量并初始化为1，记录猜测次数
+      let guessCount = 1;
+      // 创建重新开始按钮变量引用
+      let resetButton;
+
+      // 声明函数，用于检测玩家的猜数
+      function checkGuess() {
+        // 声明变量，存储用户输入的值
+        // Number() -- 把对象的值转换为数字
+        let userGuess = Number(guessField.value);
+
+        // 判断是否为第一回合
+        if (guessCount === 1) {
+          guesses.textContent = "上次猜测的数:";
+        }
+        guesses.textContent += userGuess + " ";
+
+        // 判断用户猜测的数是否和随机生成数相等
+        if (userGuess === randomNumber) {
+          lastResult.textContent = "恭喜你！猜中了！";
+          lastResult.style.backgroundColor = "green";
+
+          // 清空猜数高低提示
+          lowOrHi.textContent = "";
+
+          // 判断是否为最后一个回合
+        } else if (guessCount === 10) {
+          lastResult.textContent = "!!!游戏结束!!!";
+        } else {
+          lastResult.textContent = "很遗憾，你猜错了！";
+          lastResult.style.backgroundColor = "red";
+
+          // 判断用户猜数高低
+          if (userGuess > randomNumber) {
+            lowOrHi.textContent = "猜高了！";
+          } else if (userGuess < randomNumber) {
+            lowOrHi.textContent = "猜低了！";
+          }
+        }
+
+        // 每回合结束后，回合数自增1
+        guessCount++;
+        // 清空用户输入框
+        guessField.value = "";
+        // 获取输入框焦点
+        guessField.focus();
+      }
+
+      /*
+        事件(Event)
+          - 事件就是浏览器中的各种行为，如点击按钮、鼠标移入等
+          - 可以通过监听事件发生，并调用代码来响应事件
+          - 监听事件发生的结构称为 事件监听器(Event Listener)
+          - 事件响应触发的代码称为 事件处理器(Event Handler)
+          - 使用addEventListener()方法可以为元素对象添加事件监听器
+            - addEventListener()方法包括两个参数(argument)
+              - 事件类型，如点击事件click
+              - 事件发生时触发执行的代码
+      */
+      // 为 guessSubmit 按钮添加事件监听
+      guessSubmit.addEventListener("click", checkGuess);
+    </script>
+  </body>
+</html>

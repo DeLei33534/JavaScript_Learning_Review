@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>游戏示例_猜数字_添加函数1</title>
+
+    <style>
+      html {
+        font-family: sans-serif;
+      }
+
+      body {
+        width: 50%;
+        max-width: 800px;
+        min-width: 480px;
+        margin: 0 auto;
+      }
+
+      .lastResult {
+        color: white;
+        padding: 3px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>游戏示例_猜数字</h1>
+    <p>欢迎来到猜数字游戏!</p>
+    <p>游戏随机选定了一个100以内的自然数</p>
+    <p>不知道你能否在 10 次以内猜中它</p>
+    <p>每次系统都会告诉你，所猜的结果是高还是低了</p>
+    <p>快来试试吧!</p>
+
+    <div class="form">
+      <label for="guessField">请猜数: </label>
+      <input type="text" id="guessField" class="guessField" />
+      <input type="submit" value="确定" class="guessSubmit" />
+    </div>
+
+    <div class="resultParas">
+      <p class="guesses"></p>
+      <p class="lastResult"></p>
+      <p class="lowOrHi"></p>
+    </div>
+
+    <script>
+      /*
+        生成随机数，并存储到变量中
+          - Math.floor 向下取整
+          - Math.random()*101 生成随机数，0=<X<101
+      */
+      let randomNumber = Math.floor(Math.random() * 101);
+
+      // 创建常量分别存储文本输入与提交按钮的引用
+      const guessField = document.querySelector(".guessField");
+      const guessSubmit = document.querySelector(".guessSubmit");
+
+      // 获取对应页面段落元素引用，存储到常量中
+      const guesses = document.querySelector(".guesses");
+      const lastResult = document.querySelector(".lastResult");
+      const lowOrHi = document.querySelector(".lowOrHi");
+
+      // 创建计数器变量并初始化为1，记录猜测次数
+      let guessCount = 1;
+      // 创建重新开始按钮变量引用
+      let resetButton;
+
+      /*
+        函数初体验
+          - 函数是可复用的代码块
+          - 使用function关键字、函数名与小括号即可定义一个简单的函数
+          - 函数后的花括号代表函数体
+          - 函数体内部是调用函数时，需要执行的代码
+          - 运行函数可以使用函数名加小括号的形式(可在控制台进行测试)
+      */
+      function checkGuess() {
+        console.log("函数初体验");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>js脚本调用策略</title>
+    <!-- 
+        HTML 元素是按其在页面中出现的次序调用的(顺序执行)
+        使用JavaScript管理页面元素(更精确的说是 文档对象模型,DOM)时
+        若 JavaScript 加载于欲操作的 HTML 元素之前
+        即在HTML元素未加载完成时，使用JS进行操作，则代码将报错
+     -->
+  </head>
+  <body>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        "...代码块...";
+      });
+      /*
+        demo02中，使用了上述结构避免出现问题
+            - 这是一个事件监听器，用于监听浏览器的 "DOMContentLoaded" 事件
+            - 即 HTML 文档体加载、解释完毕事件
+            - 事件触发时，等待HTML元素加载完成后(仅元素，无需等待其他资源如样式、图片)
+            - 才会调用 "{}" 内的代码块，避免错误发生
+      */
+    </script>
+
+    <!-- 
+        demo03-js的外部引用中
+            - 使用了 JavaScript 的一项现代技术（async “异步”属性）
+              来解决这一问题
+            - 该属性告知浏览器在遇到 <script> 元素时，不中断其它 HTML 内容的加载
+            - 此时，JS脚本和 HTML 会一并加载，代码顺利运行
+            - async属性只能用于外部脚本的情况
+    -->
+    <script src="demo03.js" async></script>
+
+    <!-- 
+        解决此问题的旧方法
+            - 把脚本元素放在文档体的底端，</body> 标签之前
+            - 由于HTML的顺序执行，JS脚本会在其之前的所有 HTML 解析完毕后加载
+            - 本方法与上述的 DOMContentLoaded 方法存在不足
+                - 只有在所有 HTML DOM 加载完成后
+                - 才开始脚本的加载/解析过程
+                - 对于大型网站，存在大量 JavaScript 代码解析
+                - 可能会带来显著的性能损耗
+                - 这也是 async 属性诞生的初衷
+    -->
+  </body>
+</html>

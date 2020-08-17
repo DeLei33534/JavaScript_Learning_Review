@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>游戏示例_猜数字_初始设置</title>
+
+    <style>
+      html {
+        font-family: sans-serif;
+      }
+
+      body {
+        width: 50%;
+        max-width: 800px;
+        min-width: 480px;
+        margin: 0 auto;
+      }
+
+      .lastResult {
+        color: white;
+        padding: 3px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- 游戏提示 -->
+    <h1>游戏示例_猜数字</h1>
+    <p>欢迎来到猜数字游戏!</p>
+    <p>游戏随机选定了一个100以内的自然数</p>
+    <p>不知道你能否在 10 次以内猜中它</p>
+    <p>每次系统都会告诉你，所猜的结果是高还是低了</p>
+    <p>快来试试吧!</p>
+
+    <!-- 提供输入框，使玩家填写猜测数字 -->
+    <div class="form">
+      <!-- <label> 标签可以为 input 元素定义标注(标记) -->
+      <label for="guessField">请猜数: </label>
+      <input type="text" id="guessField" class="guessField" />
+      <input type="submit" value="确定" class="guessSubmit" />
+    </div>
+
+    <!-- 展示游戏信息，如猜测结果、上一次猜测值和猜测值高低 -->
+    <div class="resultParas">
+      <p class="guesses"></p>
+      <p class="lastResult"></p>
+      <p class="lowOrHi"></p>
+    </div>
+
+    <!-- 逻辑代码 -->
+    <script></script>
+  </body>
+</html>

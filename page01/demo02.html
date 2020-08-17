@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>内部js</title>
+  </head>
+  <body>
+    <button>屠龙宝刀，点击就送</button>
+
+    <script>
+      // 内部js
+
+      /*
+        element.addEventListener(event, function, useCapture)
+            - event	必须，字符串，指定事件名
+            - function	必须，指定要事件触发时执行的函数
+            - useCapture	可选，布尔值，指定事件是否在捕获或冒泡阶段执行
+        
+        DOMContentLoaded
+            - 当初始的 HTML 文档被完全加载和解析完成之后
+              DOMContentLoaded 事件被触发
+              无需等待样式表、图像和子框架的完全加载
+            - 即，在页面DOM被加载后立即触发，而无需等待资源完成加载
+      */
+      document.addEventListener("DOMContentLoaded", function () {
+        function createParagraph() {
+          let para = document.createElement("p");
+          para.textContent = "领取失败！请充值！";
+          document.body.appendChild(para);
+        }
+
+        const buttons = document.querySelectorAll("button");
+
+        for (let i = 0; i < buttons.length; i++) {
+          buttons[i].addEventListener("click", createParagraph);
+        }
+      });
+    </script>
+  </body>
+</html>
