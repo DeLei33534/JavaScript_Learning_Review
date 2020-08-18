@@ -8,3 +8,6 @@
 
 ### page03
 * https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/First_steps/What_went_wrong
+
+### page04
+* https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/First_steps/Variables
