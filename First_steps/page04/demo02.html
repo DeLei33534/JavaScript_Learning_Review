@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>使用关键字var声明变量</title>
+  </head>
+
+  <body>
+    <script>
+      // 由于变量提升(var hoisting), 程序可正常执行
+      myName = "delei";
+
+      function logName() {
+        console.log(myName);
+      }
+
+      logName();
+
+      var myName;
+    </script>
+  </body>
+</html>
