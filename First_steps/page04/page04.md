@@ -64,7 +64,7 @@
        value = 2;
       ```
 
-      1. 变量提升只会影响变量声明，而不会影响其值的初始化，只有执行到赋值语句时，变量才会被初始化
+      3. 变量提升只会影响变量声明，而不会影响其值的初始化，只有执行到赋值语句时，变量才会被初始化
 
       ```
        /*
@@ -150,8 +150,8 @@
                          // z 未在 x 外部声明
       ```
 
-      1. 声明变量在任何代码执行前创建，而非声明变量只有在执行赋值操作的时候才会被创建
-      2. 声明变量是它所在上下文环境的不可配置属性，非声明变量是可配置的,如非声明变量可以被删除
+      2. 声明变量在任何代码执行前创建，而非声明变量只有在执行赋值操作的时候才会被创建
+      3. 声明变量是它所在上下文环境的不可配置属性，非声明变量是可配置的,如非声明变量可以被删除
 
 4. [let 关键字](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/let)
 
@@ -195,7 +195,7 @@
       function do_something() {
          // ---暂存死区---
          console.log(bar); // undefined
-         console.log(foo); //  ReferenceError
+         console.log(foo); // ReferenceError
          var bar = 1;
          // ---暂存死区---
          let foo = 2;
@@ -208,14 +208,14 @@
    let x = 1;
 
    {
-   var x = 2; // SyntaxError for re-declaration
+      var x = 2; // SyntaxError for re-declaration
    }
    ```
 
 ### 四、变量类型
 
 1. JavaScript 是一种"动态类型语言", 在使用时不需要指定变量的具体类型，浏览器会自动根据存储的变量内容进行识别，随着内容的变更，其类型也会相应变化
-2. JavaScript 中的变量类型:[demo03]()
+2. JavaScript 中的变量类型:[demo03](https://github.com/DeLei33534/JavaScript_Learning_Review/blob/master/First_steps/page04/demo03.html)
 
 ### 五、变量命名规则
 
