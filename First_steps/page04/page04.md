@@ -36,7 +36,7 @@
 ### 三、var 与 let 的区别
 
 1. 最初的 JS 中只有 var 关键字, 现代创建的 let 关键字是为了弥补，var 在一些开发场景中的不足
-2. [var 关键字](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/var#%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87)
+2. [var 关键字](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/var)
 
    1. 变量提升(var hoisting)
 
