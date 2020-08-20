@@ -3,7 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>JavaScript变量类型</title>
   </head>
-  <body></body>
+  <body>
+    <script>
+      // Number -- 数字，包括整数和浮点数
+      let num1 = 12;
+      let num2 = 3.14159;
+      console.log(num1, num2);
+
+      // String -- 字符串，赋值时使用成对的引号包裹(单双均可，不能混用)
+      let str = "一蓑烟雨任平生";
+      console.log(str);
+
+      // Boolean -- 布尔值，包含两种：true或false
+      let test1 = 4 > 5;
+      let test2 = 5 > 4;
+      console.log(test1, test2);
+
+      // Array
+      // 数组，一种单个对象，其中包含很多值
+      // 使用方括号囊括所有值，并用逗号分隔
+      // 数组定义后，可以使用 数组名[下标] 的形式访问数组中的对应值
+      // 下标从0开始计数
+      let arrTest1 = ["delei", "chfeng", "xing"];
+      let arrTest2 = [1, 2, 3, 4, 5];
+      console.log(arrTest1[0]);
+      console.log(arrTest1[1]);
+      console.log(arrTest1[2]);
+      console.log(arrTest2[3]);
+      console.log(arrTest2[4]);
+
+      // Object
+      // 对象是以代码结构的形式，对现实生活中事物的一种抽象
+      // 可以通过 对象名.属性名 的方式，检索存储在对象中的信息
+      let car = {
+        carColor: "red",
+        brand: "VOLKSWAGEN",
+      };
+      console.log(car.carColor);
+      console.log(car.brand);
+
+      /*
+        除此之外，还有如Null、Undefined、Symbol与Function等类型
+        参见：https://www.runoob.com/js/js-datatypes.html
+      */
+    </script>
+  </body>
 </html>

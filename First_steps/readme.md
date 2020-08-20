@@ -11,3 +11,6 @@
 
 ### page04 变量
 * https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/First_steps/Variables
+
+### page05 数字与操作符
+* https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/First_steps/Math

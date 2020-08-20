@@ -215,7 +215,10 @@
 ### 四、变量类型
 
 1. JavaScript 是一种"动态类型语言", 在使用时不需要指定变量的具体类型，浏览器会自动根据存储的变量内容进行识别，随着内容的变更，其类型也会相应变化
+
 2. JavaScript 中的变量类型:[demo03](https://github.com/DeLei33534/JavaScript_Learning_Review/blob/master/First_steps/page04/demo03.html)
+
+   ![image-20200820144308](assets/image-20200820144308.png)
 
 ### 五、变量命名规则
 
