@@ -36,7 +36,7 @@
 ### 三、var 与 let 的区别
 
 1. 最初的 JS 中只有 var 关键字, 现代创建的 let 关键字是为了弥补，var 在一些开发场景中的不足
-2. var 关键字
+2. [var 关键字](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/var#%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87)
 
    1. 变量提升(var hoisting)
 
@@ -59,18 +59,18 @@
        /*
            //例一
            function todo(){
-               console.log(value);
+               console.log(value); // undefined
                var value = 123;
-               console.log(value);
+               console.log(value); // 123
            }
 
            //可以隐式(implicitly)理解为
 
            function todo(){
                var value;
-               console.log(value);
+               console.log(value); // undefined
                value = 123;
-               console.log(value);
+               console.log(value); // 123
            }
        */
 
@@ -81,21 +81,66 @@
 
           //可以隐式(implicitly)理解为
 
-          var x;
-          var y;
-          x = y;
-          y = 'A';
-          console.log(x + y);
+          var x; // undefined
+          var y; // undefined
+          x = y; // undefined
+          y = 'A'; // 'A'
+          console.log(x + y); // undefinedA
        */
       ```
 
    2. 用 var 声明的变量，作用域是它当前的执行上下文
+
       1. 当前所在函数
       2. 对于声明在函数外的变量，为全局
+
+      ```
+      var x = 0; // x是全局变量，并且赋值为0。
+
+      console.log(typeof z); // undefined，因为z还不存在。
+
+      function a() { // 当a被调用时，
+         var y = 2; // y被声明成函数a作用域的变量，然后赋值成2。
+
+         console.log(x, y); // 0 2
+
+         function b() { // 当b被调用时，
+            x = 3; // 全局变量x被赋值为3，不生成全局变量。
+            y = 4; // 已存在的外部函数的y变量被赋值为4，不生成新的全局变量。
+            z = 5; // 创建新的全局变量z，并且给z赋值为5。
+         }         // (在严格模式下（strict mode）抛出ReferenceError)
+
+         b(); // 调用b时创建了全局变量z。
+         console.log(x, y, z); // 3 4 5
+      }
+
+      a(); // 调用a时同时调用了b。
+      console.log(x, z); // 3 5
+      console.log(typeof y); // undefined，因为y是a函数的本地(local)变量
+      ```
+
    3. 变量可重新声明(相同变量名)
    4. 当给未声明的变量进行赋值时, 该变量会被隐式地创建为全局变量，将成为全局对象的一个属性
+   5. 声明变量与未声明变量的差异
+
       1. 声明变量的作用域限制在其声明位置的上下文中，而非声明变量总是全局的
+
+      ```
+         function x() {
+            y = 1;   // 在严格模式(strict mode)下会
+                     // 抛出 ReferenceError 异常
+            var z = 2;
+         }
+
+         x();
+
+         console.log(y); // 1
+         console.log(z); // 抛出 ReferenceError:
+                         // z 未在 x 外部声明
+      ```
+
       2. 声明变量在任何代码执行前创建，而非声明变量只有在执行赋值操作的时候才会被创建
+      3. 声明变量是它所在上下文环境的不可配置属性，非声明变量是可配置的,如非声明变量可以被删除
 
 3. let 关键字
    1. 123123
@@ -104,7 +149,7 @@
    2. let 不支持上述做法，增强了代码的逻辑性与严谨性
    3. 使用 var 时，可以根据需要多次相同名称的变量(相当于变更变量值)，如
    ```
-   var myName = "delei";
-   var myName = "chfeng";
+      var myName = "delei";
+      var myName = "chfeng";
    ```
    1. let 同样不支持上述做法
